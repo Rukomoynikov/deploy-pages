@@ -70,6 +70,9 @@ class Deployment {
         )
       }
 
+      core.info('Artifact')
+      core.info(JSON.stringify(artifactData))
+
       const deployment = await createPagesDeployment({
         githubToken: this.githubToken,
         artifactId: artifactData.id,
@@ -77,6 +80,9 @@ class Deployment {
         idToken,
         isPreview: this.isPreview
       })
+
+      core.info('Deployment')
+      core.info(JSON.stringify(deployment))
 
       if (deployment) {
         this.deploymentInfo = {
